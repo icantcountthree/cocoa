@@ -416,7 +416,7 @@ for (var i = 0; i < 16; i++) {
 prop("spike", 2, 44, 302, 2);
 prop("platform", 0, 0, 2, 48);
 prop("platform", -2, 46, 302, 2);
-var player = actor("player", 2, 8, 3, 3, ":/");
+var player = actor("player", 2, 8, 3, 3, ":|");
 cam.target = player;
 cam.reset();
 
