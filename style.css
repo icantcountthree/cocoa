@@ -24,6 +24,7 @@ body {
 }
 
 .platform {
+	position: absolute;
 	background: url("https://openprocessing-usercontent.s3.amazonaws.com/files/user194420/visual1202983/h1667bb68a9c9f2ff9cfc4a63a153be4a/grass.png");
 }
 
