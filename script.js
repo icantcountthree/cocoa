@@ -318,7 +318,6 @@ function collision(actor) {
       actor.x <= prop.x + prop.w
     ) {
       if (prop.type == "spike") {
-        actor.die();
         return;
       }
       if (prop.type == "platform goal") {
