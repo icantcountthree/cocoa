@@ -295,7 +295,11 @@ function actor(type, x, y, w, h, face) {
       audio.die.play();
     },
     win: function () {
-      location.reload();
+      this.vx = this.vy = 0;
+      this.x = 2;
+      this.y = 6;
+      this.move(0, 0);
+      stage.timer = 0;      
       audio.win.play();
     },
   };
