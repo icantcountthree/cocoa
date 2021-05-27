@@ -25,12 +25,12 @@ body {
 
 .platform {
 	position: absolute;
-	background: url("https://openprocessing-usercontent.s3.amazonaws.com/files/user194420/visual1202983/h1667bb68a9c9f2ff9cfc4a63a153be4a/grass.png");
+	background: url("https://raw.githubusercontent.com/Jeve-Stobs/myCDN/main/grass.png");
 }
 
 .spike {
 	position: absolute;
-	background: url("https://dl.dropboxusercontent.com/s/xfq2lph3bt5sxf1/spike.svg");
+	background: url("https://raw.githubusercontent.com/Jeve-Stobs/myCDN/main/spike.svg");
 }
 
 .friend, .player {
