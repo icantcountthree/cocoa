@@ -413,6 +413,8 @@ const cam = {
 };
 
 var y = 16;
+var a = [':)', ':(', ':/', ':|', '8/', ':0', ':<', ':]'];
+var randomValue = a[Math.floor(a.length * Math.random())];
 for (var i = 0; i < 16; i++) {
 	y = Math.round(y + (Math.random() - 0.5) * 8);
 	var w = Math.round(4 + Math.random() * 4) * 2;
@@ -424,7 +426,7 @@ for (var i = 0; i < 16; i++) {
 prop('spike', 2, 44, 302, 2);
 prop('platform', 0, 0, 2, 48);
 prop('platform', -2, 46, 302, 2);
-var player = cocoa('player', 2, 8, 3, 3, '8/');
+var player = cocoa('player', 2, 8, 3, 3, randomValue);
 cam.target = player;
 cam.reset();
 
