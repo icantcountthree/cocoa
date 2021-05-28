@@ -1,6 +1,6 @@
 /** @format */
 
-@import url('https://fonts.googleapis.com/css?family=Quicksand:700');
+@import url('https://res.cloudinary.com/acoustic/raw/upload/v1622187605/font_ddcbze.css?family=Quicksand:700');
 
 * {
 	user-select: none;
@@ -177,7 +177,7 @@ input::placeholder {
 
 .spike {
 	position: absolute;
-	background: url('https://raw.githubusercontent.com/Jeve-Stobs/myCDN/main/spike.svg');
+	background: url('https://res.cloudinary.com/acoustic/image/upload/v1622187605/spike_b5n77r.svg');
 }
 
 .friend,
