@@ -1,10 +1,8 @@
-<!-- @format -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>BioProject</title>
+		<title>Cocoa</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Bioproject please steal" />
 		<link rel="stylesheet" href="style.css" />
@@ -46,31 +44,31 @@
 			<audio
 				id="jump"
 				src="https://res.cloudinary.com/acoustic/video/upload/v1622144357/jump_iijkbv.wav"
-				type="audio/mp3"
+				type="audio/wav"
 				preload="auto"
 			></audio>
 			<audio
 				id="land"
-				src="https://res.cloudinary.com/acoustic/video/upload/v1622143651/cork_pdpju2.mp3"
-				type="audio/mp3"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622186884/land_krgvjp.wav"
+				type="audio/wav"
 				preload="auto"
 			></audio>
 			<audio
 				id="die"
-				src="https://res.cloudinary.com/acoustic/video/upload/v1622044801/die_rpi9bt.mp3"
-				type="audio/mp3"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622186681/mixkit-sword-slashes-in-battle-2763_op7dlx.wav"
+				type="audio/wav"
 				preload="auto"
 			></audio>
 			<audio
 				id="win"
-				src="https://res.cloudinary.com/acoustic/video/upload/v1622124794/bigwin_yqz6vv.mp3"
-				type="audio/mp3"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622186760/mixkit-instant-win-2021_ypkpt6.wav"
+				type="audio/wav"
 				preload="auto"
 			></audio>
 			<audio
 				id="bigwin"
-				src="https://res.cloudinary.com/acoustic/video/upload/v1622124794/bigwin_yqz6vv.mp3"
-				type="audio/mp3"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622186884/land_krgvjp.wav"
+				type="audio/wav"
 				preload="auto"
 			></audio>
 		</div>
@@ -86,12 +84,15 @@
 				var user = localStorage['user'];
 				document.getElementById('name').value = user;
 				$('#center').hide();
+
 				$(document).click(function (e) {
+					$('#img').hide();
 					if ($(e.target).closest('#start').length != 0) return false;
 					$('#start').hide();
 					$('#game').show();
 					$('#level').show();
 					$('#i').show();
+					stage.timer = 0;
 				});
 			} else {
 				document.getElementById('name').placeholder = 'Your Name';
@@ -102,6 +103,7 @@
 				$('#game').hide();
 				$('#level').hide();
 				$('#i').hide();
+				$('#img').hide();
 			});
 			document.getElementById('save').addEventListener(
 				'click',
@@ -112,11 +114,22 @@
 				},
 				false
 			);
-			if (currentLevel < 5) {
+			if (currentLevel == 1) {
 				$('#img').hide();
 				document.getElementById('wow').innerHTML =
 					'Hello ' +
-					username +
+					username + `👋` +
+					' Your current high score is ' +
+					currentLevel +
+					'<br />' +
+					'You should probably get that checked out.' +
+					'<br />' +
+					'Click anywhere to start!';
+			} else if (currentLevel < 5) {
+				$('#img').hide();
+				document.getElementById('wow').innerHTML =
+					'Hello ' +
+					username + `👋` +
 					'! Your current high score is ' +
 					currentLevel +
 					'<br />' +
@@ -125,7 +138,7 @@
 				$('#img').hide();
 				document.getElementById('wow').innerHTML =
 					'Hello ' +
-					username +
+					username + `👋` +
 					'! Your current high score is ' +
 					currentLevel +
 					'<br />' +
@@ -134,7 +147,7 @@
 				$('#img').hide();
 				document.getElementById('wow').innerHTML =
 					'Hello ' +
-					username +
+					username + `👋` +
 					'! Your current high score is ' +
 					currentLevel +
 					'<br />' +
@@ -143,7 +156,7 @@
 				$('#img').hide();
 				document.getElementById('wow').innerHTML =
 					'Hello ' +
-					username +
+					username + `👋` +
 					'! Your current high score is ' +
 					currentLevel +
 					'<br />' +

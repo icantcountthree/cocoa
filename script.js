@@ -323,6 +323,7 @@ function collision(actor) {
 		) {
 			if (prop.type == 'spike') {
 				deaths = deaths + 1;
+				actor.die();
 				return;
 			}
 			if (prop.type == 'platform goal') {
