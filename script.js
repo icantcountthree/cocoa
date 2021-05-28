@@ -292,8 +292,14 @@ function cocoa(type, x, y, w, h, face) {
 			}
 		},
 		die: function () {
-			lerp();
-			audio.die.play();
+		for (var i = 0; i < 16; i++) {
+	y = Math.round(y + (Math.random() - 0.5) * 8);
+	var w = Math.round(4 + Math.random() * 4) * 2;
+	prop('platform', i * 16, y, w, 2);
+	if (i == 15) prop('platform goal', i * 16 + w + 2, y - 8, 2, 8);
+	if (Math.random() < 0.5 && i > 1)
+		prop('spike', i * 16 + 4, y - 2, Math.round(w / 6) * 2);
+}			audio.die.play();
 			},
 		win: function () {
 			this.vx = this.vy = 0;
