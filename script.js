@@ -291,14 +291,14 @@ function cocoa(type, x, y, w, h, face) {
 				this.canjump = true;
 			}
 		},
-		die: function () {
+               die: function () {
 			prop("grave", this.x - this.vx, this.y - this.vy, 4, 3, ":(");
 			this.vx = this.vy = 0;
 			this.x = 2;
 			this.y = 6;
 			this.move(0, 0);
 			stage.timer = 0;
-}			audio.die.play();
+			audio.die.play();
 			},
 		win: function () {
 			this.vx = this.vy = 0;
