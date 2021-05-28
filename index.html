@@ -1,28 +1,159 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>BioProject</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Bioproject please steal">
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- partial:index.partial.html -->
-    <!-- Supports all browsers (even IE). Does not require canvas or WebGL -->
-    <p style="color: #FFFFFF" id="i"></p>
-    <div id="game">
-  <audio id="jump" src="https://res.cloudinary.com/acoustic/video/upload/v1622144357/jump_iijkbv.wav" type="audio/mp3" preload="auto"></audio>
-  <audio id="land" src="https://res.cloudinary.com/acoustic/video/upload/v1622143651/cork_pdpju2.mp3" type="audio/mp3" preload="auto"></audio>
-  <audio id="die" src="https://res.cloudinary.com/acoustic/video/upload/v1622044801/die_rpi9bt.mp3" type="audio/mp3" preload="auto"></audio>
-  <audio id="win" src="https://res.cloudinary.com/acoustic/video/upload/v1622124794/bigwin_yqz6vv.mp3" type="audio/mp3" preload="auto"></audio>
-  <audio id="bigwin" src="https://res.cloudinary.com/acoustic/video/upload/v1622124794/bigwin_yqz6vv.mp3" type="audio/mp3" preload="auto"></audio>
-      <div class="grave" style="top: 6pc; left: 1.5pc">>>></div>
-    </div>
-    <!-- partial -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.43/polyfill.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>BioProject</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Bioproject please steal" />
+		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="shortcut icon"
+			href="https://raw.githubusercontent.com/Jeve-Stobs/myCDN/main/Capture.PNG"
+		/>
+	</head>
+	<body>
+		<!-- partial:index.partial.html -->
+		<!-- Supports all browsers (even IE). Does not require canvas or WebGL -->
+		<p style="color: #ffffff" id="i"></p>
+		<p style="color: #ffffff" id="level"></p>
+		<p style="color: #ffffff" id="k"></p>
+		<div id="start">
+			<p style="color: #ffffff" id="wow"></p>
+			<p id="img">
+				<img
+					src="https://raw.githubusercontent.com/Jeve-Stobs/myCDN/main/Cima_da_Conegliano%2C_God_the_Father.jpg"
+				/>
+			</p>
+			<div id="center" class="center">
+				<form action="#" onsubmit="genLink();return false">
+					<input id="name" placeholder="Enter your name" />
+
+					<button
+						data-tilt
+						data-tilt-max="25"
+						data-tilt-axis="y"
+						id="save"
+						style="display: flex; justify-content: center; align-items: center"
+					>
+						<span style="font-size: 1.2rem">😎</span>
+					</button>
+				</form>
+			</div>
+		</div>
+		<div id="game">
+			<audio
+				id="jump"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622144357/jump_iijkbv.wav"
+				type="audio/mp3"
+				preload="auto"
+			></audio>
+			<audio
+				id="land"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622143651/cork_pdpju2.mp3"
+				type="audio/mp3"
+				preload="auto"
+			></audio>
+			<audio
+				id="die"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622044801/die_rpi9bt.mp3"
+				type="audio/mp3"
+				preload="auto"
+			></audio>
+			<audio
+				id="win"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622124794/bigwin_yqz6vv.mp3"
+				type="audio/mp3"
+				preload="auto"
+			></audio>
+			<audio
+				id="bigwin"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622124794/bigwin_yqz6vv.mp3"
+				type="audio/mp3"
+				preload="auto"
+			></audio>
+		</div>
+		<!-- partial -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.43/polyfill.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js"></script>
+		<script src="script.js"></script>
+		<script>
+			var username = localStorage.getItem('user');
+
+			if (localStorage['user']) {
+				var user = localStorage['user'];
+				document.getElementById('name').value = user;
+				$('#center').hide();
+				console.log(currentLevel);
+			} else {
+				document.getElementById('name').placeholder = 'Your Name';
+				console.log('name not found in localStorage');
+				$('#wow').hide();
+			}
+			$(document).ready(function () {
+				$('#game').hide();
+				$('#level').hide();
+				$('#i').hide();
+			});
+			$(document).click(function (e) {
+				if ($(e.target).closest('#start').length != 0) return false;
+				$('#start').hide();
+				$('#game').show();
+				$('#level').show();
+				$('#i').show();
+			});
+			document.getElementById('save').addEventListener(
+				'click',
+				function () {
+					var user = document.getElementById('name').value;
+					localStorage.setItem('user', user);
+					console.log('name saved');
+				},
+				false
+			);
+			if (currentLevel < 5) {
+				$('#img').hide();
+				document.getElementById('wow').innerHTML =
+					'Hello ' +
+					username +
+					'! Your current high score is ' +
+					currentLevel +
+					'<br />' +
+					"That's really sad; consider getting better. 😞";
+			} else if (currentLevel > 5 && currentLevel < 15) {
+				$('#img').hide();
+				document.getElementById('wow').innerHTML =
+					'Hello ' +
+					username +
+					'! Your current high score is ' +
+					currentLevel +
+					'<br />' +
+					'Congrats! 🎉 You are less of a failure.';
+			} else if (currentLevel > 15 && currentLevel < 25) {
+				$('#img').hide();
+				document.getElementById('wow').innerHTML =
+					'Hello ' +
+					username +
+					'! Your current high score is ' +
+					currentLevel +
+					'<br />' +
+					"I can't say I'm not surprised ¯\_(ツ)_/¯. Give yourself a pat on the back!";
+			} else if (currentLevel > 25 && currentLevel < 50) {
+				$('#img').hide();
+				document.getElementById('wow').innerHTML =
+					'Hello ' +
+					username +
+					'! Your current high score is ' +
+					currentLevel +
+					'<br />' +
+					'What hacks are you using? 🤔';
+			} else if (currentLevel > 50) {
+				$('#img').show();
+				document.getElementById('wow').innerHTML =
+					'Hello ' + username + '! Your current high score is ' + currentLevel;
+			}
+		</script>
+	</body>
 </html>
