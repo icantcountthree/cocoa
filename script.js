@@ -239,6 +239,7 @@ function cocoa(type, x, y, w, h, face) {
 	y = y || 0;
 	w = w || 2;
 	h = h || 2;
+
 	face = face || ':|';
 	var dom = $('<div>', {
 		class: type,
@@ -298,7 +299,7 @@ function cocoa(type, x, y, w, h, face) {
 			this.move(0, 0);
 			stage.timer = 0;
 			audio.die.play();
-		},
+			},
 		win: function () {
 			this.vx = this.vy = 0;
 			this.x = 2;
