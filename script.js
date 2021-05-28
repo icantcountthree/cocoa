@@ -292,7 +292,7 @@ function cocoa(type, x, y, w, h, face) {
 			}
 		},
 		die: function () {
-				stage.cocoas.push(self);
+	body.append(dom);
 
 			audio.die.play();
 			},
