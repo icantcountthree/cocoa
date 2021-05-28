@@ -292,7 +292,7 @@ function cocoa(type, x, y, w, h, face) {
 			}
 		},
 		die: function () {
-			window.requestAnimationFrame(gameloop);
+			lerp();
 			audio.die.play();
 			},
 		win: function () {
