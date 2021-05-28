@@ -292,8 +292,7 @@ function cocoa(type, x, y, w, h, face) {
 			}
 		},
 		die: function () {
-	body.append(dom);
-
+			location.href = '/#game'
 			audio.die.play();
 			},
 		win: function () {
