@@ -181,10 +181,10 @@ function lerp(v0, v1, t) {
 var stage = {
 	maxprops: 180,
 	props: [],
-	actors: [],
+	cocoas: [],
 	update: function () {
-		for (var i = 0; i < this.actors.length; i++) {
-			this.actors[i].update();
+		for (var i = 0; i < this.cocoas.length; i++) {
+			this.cocoas[i].update();
 		}
 	},
 	timer: 0,
@@ -233,7 +233,7 @@ function prop(type, x, y, w, h, text) {
 	return self;
 }
 
-function actor(type, x, y, w, h, face) {
+function cocoa(type, x, y, w, h, face) {
 	x = x || 0;
 	y = y || 0;
 	w = w || 2;
@@ -307,34 +307,34 @@ function actor(type, x, y, w, h, face) {
 			audio.win.play();
 		},
 	};
-	stage.actors.push(self);
+	stage.cocoas.push(self);
 	return self;
 }
 
-function collision(actor) {
+function collision(cocoa) {
 	var collide = 0;
 	stage.props.forEach(function (prop) {
 		if (
 			prop.solid &&
-			actor.y + actor.h >= prop.y &&
-			actor.y <= prop.y + prop.h &&
-			actor.x + actor.w >= prop.x &&
-			actor.x <= prop.x + prop.w
+			cocoa.y + cocoa.h >= prop.y &&
+			cocoa.y <= prop.y + prop.h &&
+			cocoa.x + cocoa.w >= prop.x &&
+			cocoa.x <= prop.x + prop.w
 		) {
 			if (prop.type == 'spike') {
 				deaths = deaths + 1;
-				actor.die();
+				cocoa.die();
 				return;
 			}
 			if (prop.type == 'platform goal') {
-				actor.win();
+				cocoa.win();
 				level = level + 1;
 				return;
 			}
-			var dy1 = actor.y + actor.h - prop.y;
-			var dy2 = prop.y + prop.h - actor.y;
-			var dx1 = actor.x + actor.w - prop.x;
-			var dx2 = prop.x + prop.w - actor.x;
+			var dy1 = cocoa.y + cocoa.h - prop.y;
+			var dy2 = prop.y + prop.h - cocoa.y;
+			var dx1 = cocoa.x + cocoa.w - prop.x;
+			var dx2 = prop.x + prop.w - cocoa.x;
 			var c = Math.min(
 				Math.abs(dy1),
 				Math.abs(dy2),
@@ -342,21 +342,21 @@ function collision(actor) {
 				Math.abs(dx2)
 			);
 			if (c == dy1) {
-				actor.y = prop.y - actor.h;
-				actor.vy = 0;
+				cocoa.y = prop.y - cocoa.h;
+				cocoa.vy = 0;
 				collide |= BOTTOM;
 			} else if (c == dy2) {
-				actor.y = prop.y + prop.h;
-				actor.vy = -actor.vy / 2 + 0.1;
+				cocoa.y = prop.y + prop.h;
+				cocoa.vy = -cocoa.vy / 2 + 0.1;
 				collide |= TOP;
 			} else if (c == dx1) {
-				actor.x = prop.x - actor.w;
+				cocoa.x = prop.x - cocoa.w;
 				collide |= RIGHT;
 			} else if (c == dx2) {
-				actor.x = prop.x + prop.w;
+				cocoa.x = prop.x + prop.w;
 				collide |= LEFT;
 			}
-			actor.move(0, 0);
+			cocoa.move(0, 0);
 		}
 	});
 	return collide;
@@ -422,7 +422,7 @@ for (var i = 0; i < 16; i++) {
 prop('spike', 2, 44, 302, 2);
 prop('platform', 0, 0, 2, 48);
 prop('platform', -2, 46, 302, 2);
-var player = actor('player', 2, 8, 3, 3, '8/');
+var player = cocoa('player', 2, 8, 3, 3, '8/');
 cam.target = player;
 cam.reset();
 
