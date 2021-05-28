@@ -86,7 +86,13 @@
 				var user = localStorage['user'];
 				document.getElementById('name').value = user;
 				$('#center').hide();
-				console.log(currentLevel);
+				$(document).click(function (e) {
+					if ($(e.target).closest('#start').length != 0) return false;
+					$('#start').hide();
+					$('#game').show();
+					$('#level').show();
+					$('#i').show();
+				});
 			} else {
 				document.getElementById('name').placeholder = 'Your Name';
 				console.log('name not found in localStorage');
@@ -96,13 +102,6 @@
 				$('#game').hide();
 				$('#level').hide();
 				$('#i').hide();
-			});
-			$(document).click(function (e) {
-				if ($(e.target).closest('#start').length != 0) return false;
-				$('#start').hide();
-				$('#game').show();
-				$('#level').show();
-				$('#i').show();
 			});
 			document.getElementById('save').addEventListener(
 				'click',

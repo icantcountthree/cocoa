@@ -449,5 +449,6 @@ function gameloop(time) {
 		localStorage.setItem('currentLevel', level);
 	}
 }
+
 cam.zoom();
 window.requestAnimationFrame(gameloop);
