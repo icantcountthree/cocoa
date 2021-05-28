@@ -1,4 +1,5 @@
 /** @format */
+'use strict';
 var level = 1;
 var deaths = 0;
 var currentLevel = localStorage.getItem('currentLevel');
@@ -437,7 +438,7 @@ function gameloop(time) {
 	});
 	stage.timer++;
 	$('#i').text(sp('Time: %.1f', stage.timer / 60));
-	$('#level').text(sp('Level: %.0f', level));
+	$('#level').text(sp('Level: %.0f', level, ' | Deaths: %.0f', deaths));
 
 	touch.right = false;
 	touch.left = false;

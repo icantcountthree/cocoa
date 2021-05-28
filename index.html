@@ -7,7 +7,7 @@
 		<title>Cocoa</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Bioproject please steal" />
-		<link rel="stylesheet" href="style.css" defer/>
+		<link rel="stylesheet" href="style.css" defer />
 		<link
 			rel="shortcut icon"
 			href="https://res.cloudinary.com/acoustic/image/upload/v1622187840/Capture_tvnatb.png"
@@ -58,7 +58,7 @@
 			></audio>
 			<audio
 				id="die"
-				src="https://res.cloudinary.com/acoustic/video/upload/v1622186681/mixkit-sword-slashes-in-battle-2763_op7dlx.wav"
+				src="https://res.cloudinary.com/acoustic/video/upload/v1622188959/die_jk9pnt.wav"
 				type="audio/wav"
 				preload="auto"
 			></audio>
@@ -95,8 +95,8 @@
 					$('#game').show();
 					$('#level').show();
 					$('#i').show();
-					cocoa.die();
-					});
+					stage.timer = 0;
+				});
 			} else {
 				document.getElementById('name').placeholder = 'Your Name';
 				console.log('name not found in localStorage');
