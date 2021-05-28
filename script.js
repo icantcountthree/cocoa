@@ -292,7 +292,7 @@ function cocoa(type, x, y, w, h, face) {
 			}
 		},
 		die: function () {
-			location.href = '/#game'
+			window.requestAnimationFrame(gameloop);
 			audio.die.play();
 			},
 		win: function () {
